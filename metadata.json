@@ -1,0 +1,6 @@
+{
+  "name": "OnlineShop",
+  "description": "A production-ready online store management system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

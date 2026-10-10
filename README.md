@@ -1,11 +1,64 @@
-<div align="center">
+# OnlineShop Management System - Step 1 Foundation
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Bu loyiha professional darajadagi onlayn do'kon boshqaruv tizimining poydevori hisoblanadi. Loyiha modular va kengaytiriluvchan qilib ishlab chiqilgan.
 
-  <h1>Built with AI Studio</h2>
+## Loyiha Strukturasi
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+- `/frontend`: React + TypeScript + Tailwind CSS (Vite yordamida)
+- `/backend`: Python + FastAPI
+- `/docs`: Loyiha hujjatlari
+- `server.ts`: Production uchun Node.js proxy serveri
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Talab qilinadigan dasturlar
 
-</div>
+- Node.js (v18+)
+- Python (v3.10+)
+- PostgreSQL (Kelgusi qadamlar uchun)
+
+## O'rnatish
+
+1. Frontend bog'liqliklarini o'rnatish:
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+2. Backend bog'liqliklarini o'rnatish:
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
+
+3. Root bog'liqliklarini o'rnatish:
+   ```bash
+   npm install
+   ```
+
+## Ishga tushirish (Development)
+
+Root papkasida quyidagi buyruqni bajaring:
+```bash
+npm run dev
+```
+Bu buyruq bir vaqtning o'zida Frontend (port 3000) va Backend (port 8000) ni ishga tushiradi.
+
+## Health Endpoint Tekshirish
+
+Backend ishlayotganini tekshirish uchun:
+`GET http://localhost:8000/api/health`
+
+Kutilayotgan javob:
+```json
+{
+  "status": "ok"
+}
+```
+
+## Branding Sozlamalari
+
+Do'kon nomi, logotipi, ranglari va boshqa brending ma'lumotlarini o'zgartirish uchun:
+`frontend/src/config/branding.ts` faylini tahrirlang.
+
+## Muhit (Environment) Sozlamalari
+
+`.env.example` faylidan nusxa olib `.env` faylini yarating va kerakli qiymatlarni kiriting. Maxfiy ma'lumotlarni hech qachon kod ichida saqlamang.
