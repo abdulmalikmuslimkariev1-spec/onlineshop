@@ -19,15 +19,9 @@ import {
   EyeOff
 } from 'lucide-react';
 import { ManagementLayout } from '../../components/ManagementLayout';
-import { getBaseUrl } from '../../utils/resolver';
+import { getApiBaseUrl } from '../../utils/resolver';
 
-const isDevOrPreview = window.location.hostname === 'localhost' || 
-                       window.location.hostname === '127.0.0.1' || 
-                       window.location.hostname.includes('ais-dev') || 
-                       window.location.hostname.includes('ais-pre') || 
-                       window.location.hostname.includes('run.app');
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || (isDevOrPreview ? '/api' : `${getBaseUrl()}/api`);
+const API_BASE_URL = getApiBaseUrl();
 
 interface ProductImage {
   id: number;
