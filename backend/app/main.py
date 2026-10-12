@@ -1,4 +1,3 @@
-```python
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,10 +17,9 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS configuration
+# CORS configuration: allow_origin_regex to accept Vercel, localhost, and mobile clients
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
     allow_origin_regex=r".*",
     allow_credentials=True,
     allow_methods=["*"],
@@ -78,4 +76,3 @@ if __name__ == "__main__":
 
     port = int(os.getenv("PORT", os.getenv("BACKEND_PORT", "8001")))
     uvicorn.run(app, host="0.0.0.0", port=port)
-```
