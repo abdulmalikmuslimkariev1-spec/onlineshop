@@ -7,28 +7,29 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const pythonBin = process.env.PYTHON_BIN || 'python3';
+
 // Ensure Python dependencies are installed on startup
 try {
   console.log('Verifying Python pip availability...');
   try {
-    execSync('/usr/bin/python3 -m pip --version', { stdio: 'ignore' });
+    execSync(`${pythonBin} -m pip --version`, { stdio: 'ignore' });
   } catch (e) {
-    console.log('pip is missing. Installing pip via get-pip.py...');
-    execSync('/usr/bin/python3 get-pip.py', { stdio: 'inherit', cwd: __dirname });
+    console.log('pip is missing...');
   }
 
   console.log('Installing/verifying Python dependencies...');
-  execSync('/usr/bin/python3 -m pip install -r backend/requirements.txt python-multipart', { stdio: 'inherit' });
+  execSync(`${pythonBin} -m pip install -r backend/requirements.txt python-multipart`, { stdio: 'inherit' });
 } catch (err) {
   console.error('Dependency installation failed, continuing anyway:', err);
 }
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Start FastAPI Backend
 console.log('Starting FastAPI backend...');
-const backend = spawn('/usr/bin/python3', [
+const backend = spawn(pythonBin, [
   '-m', 'uvicorn',
   'app.main:app',
   '--host', '0.0.0.0',
