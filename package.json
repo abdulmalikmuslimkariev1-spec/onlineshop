@@ -7,7 +7,7 @@
     "dev": "concurrently -n \"frontend,backend\" -c \"blue,green\" \"npm run dev:frontend\" \"bash backend/start_backend.sh\"",
     "dev:frontend": "cd frontend && npm run dev -- --port 3000",
     "dev:backend": "bash backend/start_backend.sh",
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm install && npm run build",
     "lint": "cd frontend && npm run lint",
     "start": "npx tsx server.ts",
     "install:all": "npm install && cd frontend && npm install && cd .. && /root/.local/bin/pip install -r backend/requirements.txt"
