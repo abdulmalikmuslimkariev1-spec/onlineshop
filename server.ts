@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import { spawn, execSync } from 'child_process';
 import { fileURLToPath } from 'url';
@@ -43,7 +44,6 @@ const backend = spawn(pythonBin, [
   stdio: ['ignore', 'pipe', 'pipe']
 });
 
-import fs from 'fs';
 const logStream = fs.createWriteStream('backend.log');
 backend.stdout.pipe(logStream);
 backend.stderr.pipe(logStream);
